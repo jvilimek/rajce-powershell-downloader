@@ -25,6 +25,7 @@ function getJsonVariable([string]$variableName){
 	$fullVariableDeclaration = "var $variableName = ";
 	$lineRaw = $requestLogin.Content  -split '\r?\n' | Select-String $fullVariableDeclaration;
 	$lineRaw = $lineRaw -replace $fullVariableDeclaration,''
+	$lineRaw = $lineRaw.Replace('filename', 'filename2')
 	$lineRaw = $lineRaw -replace ';',''
 	return $lineRaw | ConvertFrom-Json;
 }
